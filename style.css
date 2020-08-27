@@ -31,6 +31,13 @@ and open the template in the editor.
     position: relative;
     border: 1px solid black;
 }
+#wrapperKontakt{
+    margin: 0px auto;
+    width: 100vw;
+    height: 113vh;
+    padding: 0;
+    position: relative;
+}
 #top{
     width: 93%;
     height: 100vh;
@@ -113,6 +120,44 @@ and open the template in the editor.
       color: #fcffb1;
       text-shadow: 2px 0 0 #45334c, -2px 0 0 #45334c, 0 2px 0 #45334c, 0 -2px 0 #45334c, 1px 1px #45334c, -1px -1px 0 #45334c, 1px -1px 0 #45334c, -1px 1px 0 #45334c;
   }
+  #bodyKontakt{
+    margin: 0px auto;
+    width: 100vw;
+    height: 84%;
+    background-color: #BBB9A4;
+}
+#formaWrapper{
+    width: 70%;
+    margin: 0px auto;
+    height: 100%;
+    border: 1px solid #BBB9A4;
+}
+#forma{
+    margin-top: 2%;
+    position: relative;
+}
+input[type=text], select, textarea ,[type=email] {
+  width: 100%; /* Full width */
+  background-color: white;
+  padding: 1vh; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 1%; /* Add a top margin */
+  margin-bottom: 1%; /* Bottom margin */
+}
+input[type=submit] {
+  background-color: #79002D;
+  width: 15%;
+  color: #fcffb1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.star{
+    color: red;
+}
   #txtAreaDiv{
     display: block;
     margin-left: auto;
@@ -186,4 +231,7 @@ and open the template in the editor.
 	text-align: center;
 	width: 10vw;
 	height: 7vh;
+}
+.cleaner{
+    clear: both;
 }

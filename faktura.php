@@ -12,7 +12,7 @@ class Recept{
 }
 
 function proveriRp ($SifRp, $DatRodj, $BrZK, $LBO, $DatPropLeka, $PropLek, $DatIzdLeka, $IzdLek, $RBr, $podApoteka){
-    global $odgovoriObrade; //Glupi var scope php-a
+    global $odgovoriObrade; //Glupi var scope php-a (Global)
     global $sifreRecepata;
 
     if(strlen($SifRp)<11){
