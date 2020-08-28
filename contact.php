@@ -36,6 +36,14 @@
                         <li><a class ="active" href="index.php">Home</a></li>
                         <li><a href="faktura.php">RFZO faktura</a></li>
                         <li><a href="aboutUs.html">About us</a></li>
+						<li><div class="dropdown">
+                        <button class="dropbtn">Rokovi</button>
+                          <div class="dropdown-content">
+                            <a href="rokovi_unos.php">Unos</a>
+                            <a href="rokovi_povrat.php">Povrat</a>
+                          </div>
+                         </div>
+						</li>
                         <li><a href="contact.php">Kontakt</a></li>
                     </ul>
             </div>
