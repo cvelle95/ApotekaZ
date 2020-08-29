@@ -66,7 +66,7 @@ function proveriRp ($SifRp, $DatRodj, $BrZK, $LBO, $DatPropLeka, $PropLek, $DatI
  }
 
 
-$target_dir = "C:/wamp64/www/test/uploads/"; //absolute!
+$target_dir = "C:/xampp/htdocs/test/uploads/"; //absolute!
 $uploadOk = 1;
 $odgovor = "";
 $fileName= "";

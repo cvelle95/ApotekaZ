@@ -4,14 +4,13 @@ if(isset($_POST['email'])) {
 
  
     function died($error) {
-        // your error code can go here
         echo "We are very sorry, but there were error(s) found with the form you submitted. ";
         echo $error."<br /><br />";
         die();
     }
  
  
-    // validation expected data exists
+    // Da li su podaci iz forme primljeni
     if(!isset($_POST['first_name']) ||
         !isset($_POST['last_name']) ||
         !isset($_POST['email']) ||
@@ -28,7 +27,7 @@ if(isset($_POST['email'])) {
     $subj = $_POST['subj']; // required
  
     $error_message = "";
-	$email_to = "ivanvani@icco.rf.gd";
+   	$email_to = "cvetkovici888@gmail.com";
     $email_subject = "New form submit from: ".$first_name." ".$last_name;
  
  
@@ -54,14 +53,17 @@ if(isset($_POST['email'])) {
  
 // create email headers
 $headers = 'From: '.$email."\r\n".
-'Reply-To: '.$email."\r\n" .
-'X-Mailer: PHP/' . phpversion();
-@mail($email_to, $email_subject, $email_message, $headers);  
+'Reply-To: '.$email."\r\n";
+if(@mail($email_to, $email_subject, $email_message, $headers)){
+  echo "Thank you for contacting us";
+}
+else{
+  echo "Error sending email";
+}
 ?>
  
 <!-- html -->
  
-<p id="emsuccess">Thank you for contacting us.</p>
  
 <?php
  

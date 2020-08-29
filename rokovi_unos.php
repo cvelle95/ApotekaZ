@@ -42,7 +42,7 @@
         </div>
         <div id="bodyUnosRok">
             <div id="formaWrapper">
-                <form method="post" name="forma" action="unesiRok.php" id="forma"onsubmit="return proveriFormu()" >
+                <form method="post" name="forma" action="upisiRok.php" id="forma"onsubmit="return proveriFormu()" >
                     <label for="kod">Kod <span class="star">*</span></label>
                     <input type="text" id="kod" name="kod" required>
                     
@@ -86,6 +86,7 @@
             
         </div>
     </div>
+
     
         <script>
             function proveriFormu() {

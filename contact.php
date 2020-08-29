@@ -81,32 +81,32 @@
     
         <script>
             function proveriFormu() {
-            var fname = document.forms["forma"]["first_name"].value;
-            var lname = document.forms["forma"]["last_name"].value;
-            var subject = document.forms["forma"]["subj"].value;
-            var email = document.forms["forma"]["email"].value;
-            var prIP =/[A-ZČĆŽŠĐ][a-zčćžšđ]{1,20}/;
-            var emcheck =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!prIP.test(fname)) {
-            alert("Name must begin with capital letter and have maximum of 21 characters");
-            return false;
-            }
-            else if (!prIP.test(lname)) {
-            alert("Last name must begin with capital letter and have maximum of 21 characters");
-            return false;
-            }
-            else if (!emcheck.test(email)) {
-            alert("Please enter valid email adress");
-            return false;
-            }
-            else if (subject === "" || subject.length<5) {
-            alert("Please fill out subject");
-            return false;
-            }
-            else {
-            return true;
-            }
-}
+               var fname = document.forms["forma"]["first_name"].value;
+               var lname = document.forms["forma"]["last_name"].value;
+               var subject = document.forms["forma"]["subj"].value;
+               var email = document.forms["forma"]["email"].value;
+               var prIP =/[A-ZČĆŽŠĐ][a-zčćžšđ]{1,20}/;
+               var emcheck =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+               if (!prIP.test(fname)) {
+                  alert("Name must begin with capital letter and have maximum of 21 characters");
+               return false;
+               }
+               else if (!prIP.test(lname)) {
+                  alert("Last name must begin with capital letter and have maximum of 21 characters");
+               return false;
+               }
+               else if (!emcheck.test(email)) {
+                  alert("Please enter valid email adress");
+               return false;
+               }
+               else if (subject === "" || subject.length<5) {
+                  alert("Please fill out subject");
+               return false;
+               }
+               else {
+               return true;
+               }
+            }   
         </script>
     </body>
 </html>
