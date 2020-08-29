@@ -40,6 +40,13 @@ and open the template in the editor.
     padding: 0;
     position: relative;
 }
+#wrapperUpis{
+    margin: 0px auto;
+    width: 100vw;
+    height: 60vh;
+    padding: 0;
+    position: relative;
+}
 #top{
     width: 93%;
     height: 120vh;
@@ -63,6 +70,11 @@ and open the template in the editor.
 #header{
     width: 100%;
     height: 13vh;
+    z-index: 0;
+}
+#headerUpis{
+    width: 100%;
+    height: 22vh;
     z-index: 0;
 }
 
@@ -132,6 +144,7 @@ and open the template in the editor.
     height: 100%;
     border: 1px solid #BBB9A4;
 }
+
 #forma{
     margin-top: 2%;
     position: relative;
@@ -186,6 +199,10 @@ input[type=submit] {
     width: 100%;
     height: 8vh;
 }
+#footerUpis{
+    width: 100%;
+    height: 18vh;
+}
 #gfooter{
     margin-top: 1vh;
     width: 93%;
@@ -199,6 +216,13 @@ input[type=submit] {
 #dfooter{
     width: 100%;
     height: 7vh;
+    margin-top: 1vh;
+    background-color: black;
+    position: relative;
+}
+#dfooterUpis{
+    width: 100%;
+    height: 17vh;
     margin-top: 1vh;
     background-color: black;
     position: relative;

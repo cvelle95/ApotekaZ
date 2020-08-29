@@ -20,8 +20,8 @@
         </style>
     </head>
     <body>
-        <div id="wrapperKontakt">
-        <div id="header">
+        <div id="wrapperUpis">
+        <div id="headerUpis">
             <div id="logo"></div>
             <div id="menu">
                     <ul class ="navigacija">
@@ -46,9 +46,6 @@
                     <label for="kod">Kod <span class="star">*</span></label>
                     <input type="text" id="kod" name="kod" required>
                     
-                    <label for="artikal">Artikal <span class="star">*</span></label>
-                    <input type="text" id="artikal" name="artikal" required>
-                    
                     <label for="kolicina">Kolicina</label>
                     <input type="text" id="kolicina" name="kolicina" >
 
@@ -70,9 +67,6 @@
 
                     <label for="godina">Godina</label>
                     <input type="text" id="godina" name="godina"  placeholder="2020">
-
-                    <label for="subject">Poruka</label>
-                    <textarea id="subject" name="subj" placeholder="..." style="height:12vh;"></textarea>
                     
                     <input type="submit" value="Submit">
                 </form>
@@ -81,8 +75,8 @@
         <?php
         $godinaCopyright = date('Y');
         ?>
-        <div id="footerFaktura">
-        <div id="dfooter"><p id="copyright">&copy Vanii <?php echo $godinaCopyright?></p>
+        <div id="footerUpis">
+        <div id="dfooterUpis"><p id="copyright">&copy Vanii <?php echo $godinaCopyright?></p>
             
         </div>
     </div>

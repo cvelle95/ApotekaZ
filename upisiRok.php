@@ -11,15 +11,13 @@
             exit();
         }
          if(isset($_POST['kod'])){
-            if(!isset($_POST['artikal']) ||
-            !isset($_POST['kolicina']) ||
+            if(!isset($_POST['kolicina']) ||
             !isset($_POST['mesec']) ||
             !isset($_POST['godina'])) {
             died('Error submiting form to upisiRok.php'); 
             echo "Greska od forme";      
             }
             $code = $_POST['kod'];
-            $naziv =  $_POST['artikal'];
             $kolicina =  $_POST['kolicina'];
             $mesec_isteka =  $_POST['mesec'];
             $godina_isteka =  $_POST['godina'];
