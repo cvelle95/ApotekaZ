@@ -1,4 +1,5 @@
 <?php
+   session_start();
     $host='localhost';
     $user='ivan';//promeni posle
     $pass = 'ivak47';
@@ -11,7 +12,7 @@
    }
    //ako nije primio podatke iz forme
     if(!isset($_POST['mesec']) || !isset($_POST['godina'])) {
-    died('Error submiting form to upisiRok.php'); 
+    died('Error submiting form to povrat.php'); 
     echo "Greska od forme";      
     }
 

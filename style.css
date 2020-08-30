@@ -47,6 +47,13 @@ and open the template in the editor.
     padding: 0;
     position: relative;
 }
+#wrapperLogin{
+    margin: 0px auto;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    position: relative;
+}
 #top{
     width: 93%;
     height: 120vh;
@@ -138,10 +145,22 @@ and open the template in the editor.
     height: 84%;
     background-color: #BBB9A4;
 }
+#bodyLogin{
+    margin: 0px auto;
+    width: 100vw;
+    height: 60vh;
+    background-color: #BBB9A4;
+}
 #formaWrapper{
     width: 70%;
     margin: 0px auto;
     height: 100%;
+    border: 1px solid #BBB9A4;
+}
+#formaLogin{
+    width: 40vw;
+    margin: 0px auto;
+    height: 40vh;
     border: 1px solid #BBB9A4;
 }
 
@@ -266,6 +285,26 @@ input[type=submit] {
 	text-align: center;
 	width: 10vw;
 	height: 7vh;
+}
+#sub{
+    background-color: #79002D;
+    width: 35%;
+    color: #fcffb1;
+    padding: 12px 20px;
+    border: none;
+    margin-top: 2vh;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#password{
+    width: 100%; /* Full width */
+    background-color: white;
+    padding: 1vh; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 1%; /* Add a top margin */
+    margin-bottom: 1%; /* Bottom margin */
 }
 .cleaner{
     clear: both;

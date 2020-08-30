@@ -153,6 +153,7 @@ if(isset($_POST["submit"])) { // Ako je submitovano
                          </div>
 						</li>
                         <li><a href="contact.php">Kontakt</a></li>
+                        <li><a href="login.php">Login</a></li>
                     </ul>
             </div>
         </div>

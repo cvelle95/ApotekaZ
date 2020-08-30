@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +21,7 @@
         </style>
     </head>
     <body>
-        <div id="wrapperUpis">
+        <div id="wrapperLogin">
         <div id="headerUpis">
             <div id="logo"></div>
             <div id="menu">
@@ -41,55 +42,28 @@
                     </ul>
             </div>
         </div>
-        <div id="bodyUnosRok">
-            <div id="formaWrapper">
-                <form method="post" name="forma" action="povrat.php" id="forma"onsubmit="return proveriFormu()" >
-                    <label for="mesec">Mesec</label>
-                      <select name="mesec" id="mesec">
-                         <option value="1">1</option>
-                         <option value="2">2</option>
-                         <option value="3">3</option>
-                         <option value="4">4</option>
-                         <option value="5">5</option>
-                         <option value="6">6</option>
-                         <option value="7">7</option>
-                         <option value="8">8</option>
-                         <option value="9">9</option>
-                         <option value="10">10</option>
-                         <option value="11">11</option>
-                         <option value="12">12</option>
-                         </select>
+        <div id="bodyLogin">
+            <div id="formaLogin">
+                <form method="post" name="forma" action="registrujKorisnika.php" id="forma" >
 
-                    <label for="godina">Godina</label>
-                    <input type="text" id="godina" name="godina"  placeholder="2020">
-                    
-                    <input type="submit" value="Generate">
+                <label for="ime_prezime">Ime i prezime </label>
+                <input type="text" id="ime_prezime" name="ime_prezime" required>
+
+                <label for="username">Username </label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"  required>
+
+                <input type="submit" id="sub" value="Register">
                 </form>
             </div>
         </div>
         <?php
-        $godinaCopyright = date('Y');
+        $godinaCopyright = date('Y');// trenutna godina
         ?>
-        <div id="footerPovrat">
-        <div id="dfooterPovrat"><p id="copyright">&copy Vanii <?php echo $godinaCopyright?></p>
+        <div id="footerUpis">
+        <div id="dfooterUpis"><p id="copyright">&copy Vanii <?php echo $godinaCopyright?></p>
             
         </div>
     </div>
-
-    <script>
-            function proveriFormu() {
-
-            var godina = document.forms["forma"]["godina"].value;
-            var clen = 6;
-            if (godina < 2020 || godina.length !==4 ) {
-            alert("Unesite ispravno godinu");
-            return false;
-            }
-            else {
-            return true;
-            }
-}
-        </script>
-
-    </body>
-</html>
