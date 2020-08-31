@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['email'])) {
  
 
@@ -15,7 +16,7 @@ if(isset($_POST['email'])) {
         !isset($_POST['last_name']) ||
         !isset($_POST['email']) ||
         !isset($_POST['subj'])) {
-        died('We are sorry, but there appears to be a problem with the form you submitted.');       
+        died('Greska forme');       
     }
  
      
@@ -37,7 +38,7 @@ if(isset($_POST['email'])) {
  
     $email_message = "Form details below.\n\n";
  
-     
+     // ocisti string
     function clean_string($string) {
       $bad = array("content-type","bcc:","to:","cc:","href");
       return str_replace($bad,"",$string);
@@ -50,19 +51,45 @@ if(isset($_POST['email'])) {
     $email_message .= "Email: ".clean_string($email)."\n";
     $email_message .= "Company: ".clean_string($comp)."\n";
     $email_message .= "Subject: ".clean_string($subj)."\n";
+
+    /////////////////////////////////////////// UPIS U BAZUZ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    $host='localhost';
+     $user='ivan';//promeni posle
+     $pass = 'ivak47';
+     $db = 'apotekaz';
+ 
+     $dataBase = new mysqli($host,$user,$pass,$db) or die("Neuspesna konekcija na bazu");
+     if ($dataBase->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
+      }
+   ///// proveri da li je ulogovan user i napravi querije na osnovu toga
+      if(isset($_SESSION['username'])){
+          $user_id = $_SESSION['user_id'];
+          $upit = "INSERT INTO message (name,surname,email,text,user_id) VALUES ('$first_name','$last_name','$email','$subj',$user_id);";
+      }
+      else{
+          $upit = "INSERT INTO message (name,surname,email,text) VALUES ('$first_name','$last_name','$email','$subj');";
+      }
+
+      $dataBase->query($upit);
+  
+      $dataBase->close();
+    /////////////////////////////////////////////////////////////////////////////////////////
  
 // create email headers
 $headers = 'From: '.$email."\r\n".
 'Reply-To: '.$email."\r\n";
 if(@mail($email_to, $email_subject, $email_message, $headers)){
   echo "Thank you for contacting us";
+  header( "refresh:3;url=index.php" );
 }
 else{
   echo "Error sending email";
+  header( "refresh:3;url=index.php" );
 }
 ?>
  
-<!-- html -->
  
  
 <?php

@@ -37,6 +37,6 @@ session_start();
             echo "Uspesno ste se registrovali";
             header( "refresh:2;url=login.php" );
         }
-
+    $dataBase->close();
 
 ?>

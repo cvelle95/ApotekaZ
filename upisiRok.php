@@ -41,6 +41,6 @@
                 else{
                     echo "Upis u bazu nije izvrsen! Ne postoji artikal sa datim kodom";
                 }
-                $dataBase->close();
             }
+        $dataBase->close();
     ?>

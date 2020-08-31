@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Unos Rokova</title>
+        <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -47,7 +47,20 @@
                 <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] == true){ // proveri da li je ulogovan user
                     $user = $_SESSION['username'];
                     echo "<p style='color:red;'>Vec ste ulogovani kao <span style='color:green;'> $user </span> <a href='odjava.php'>odjavite se</a></p>";
-                } ?>
+                    $dataBase = new mysqli('localhost','ivan','ivak47','apotekaz') or die("Neuspesna konekcija na bazu");
+                    if ($dataBase->connect_errno) {
+                       printf("Connect failed: %s\n", $mysqli->connect_error);
+                    exit();
+                    }
+                    // ukupno minuta
+                    $userId = $_SESSION['user_id'];
+                    $upit = "SELECT SUM(ukupnoMinuta) FROM sesija WHERE user_id = $userId;";
+                    $result = $dataBase->query($upit);
+                    $row = $result->fetch_assoc();
+                    $minuti = $row['SUM(ukupnoMinuta)'];
+
+                    echo "<p style='color:grey;'>Ukupno minuta provedeno kao  <span style='color:green;'> $user </span> na svim vasim prethodnim sesijama: <span style='color:green;'>$minuti </span></p>";
+                    $dataBase->close();} ?>
                 <form method="post" name="forma" action="validate.php" id="forma" >
                     <label for="username">Username </label>
                     <input type="text" id="username" name="username" required>

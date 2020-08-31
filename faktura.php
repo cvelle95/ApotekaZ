@@ -4,13 +4,16 @@ $sifreRecepata = array();      //Za kasniju proveru duple sifre
 class Recept{
     public $RBr;
     public $podApoteka;
+    public $sifraRp;
 
-    function __construct($RBr, $podApoteka){
+    //konstruktor
+    function __construct($RBr, $podApoteka,$sifraRp){
         $this->RBr = $RBr;
         $this->podApoteka = $podApoteka;
+        $this->sifraRp = $sifraRp;
     }
 }
-
+//proveri recept
 function proveriRp ($SifRp, $DatRodj, $BrZK, $LBO, $DatPropLeka, $PropLek, $DatIzdLeka, $IzdLek, $RBr, $podApoteka){
     global $odgovoriObrade; //Glupi var scope php-a (Global)
     global $sifreRecepata;
@@ -20,7 +23,15 @@ function proveriRp ($SifRp, $DatRodj, $BrZK, $LBO, $DatPropLeka, $PropLek, $DatI
         $odgovoriObrade[] = $o;
     }
     else{
-        $sifreRecepata[] = new Recept($RBr,$podApoteka);
+        //Provera duple sifre i dodavanje sifre recepata u niza sifara
+        if(!empty($sifreRecepata)){
+            foreach($sifreRecepata as $rec){   
+                    if(strcmp($rec->sifraRp,$SifRp)==0){
+                        $odgovoriObrade[] = "DUPLA SIFRA RECEPTA ".$RBr . " kod apoteke: ". $podApoteka;
+                    }
+            }
+      }
+        $sifreRecepata[] = new Recept($RBr,$podApoteka,$SifRp);
     }
     
     if(strlen($DatRodj)>4){
@@ -48,6 +59,7 @@ function proveriRp ($SifRp, $DatRodj, $BrZK, $LBO, $DatPropLeka, $PropLek, $DatI
     if(strlen($PropLek)<5){
         $odgovoriObrade[] = "Neispravna sifra prop leka sa RBr: ".$RBr . " kod apoteke: ". $podApoteka;
     }
+    //proveri datume propisivanja i izdavanja leka
     $godinaPropLeka = substr($DatPropLeka, -4);
     $mesecPropLeka = substr($DatPropLeka,2,2);
     $danPropLeka = substr($DatPropLeka,0,2);
@@ -94,7 +106,7 @@ if(isset($_POST["submit"])) { // Ako je submitovano
           $odgovor = "The file ". $fileName. " has been uploaded.&#10";
           $xml = simplexml_load_file($target_file) or die ("Cant open xml file"); //otvori fajl i konvertuj u objekat pomocu simpleXml
           //Proveravam fakturu ovde...
-          foreach($xml->Faktura as $faktura){
+          foreach($xml->Faktura as $faktura){ //Za svaku pod apoteku
               $podApoteka = $faktura->SifraPodApoteke;
               foreach($faktura->Rp as $rp){
                   proveriRp($rp->SifRp, $rp->DatRodj, $rp->BrZK, $rp->LBO, $rp->DatPropLeka, $rp->PropLek, $rp->DatIzdLeka, $rp->IzdLek, $rp->RBr ,$podApoteka);

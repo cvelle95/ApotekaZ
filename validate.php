@@ -21,15 +21,23 @@ session_start();
             $_SESSION['username'] = $username;
             $row = $result->fetch_assoc();
             $priv = $row['privilegije'];
+            $usid = $row['user_id'];
             $_SESSION['privilegije'] = $priv;
             echo "Uspesno ste se ulogovali";
             echo "Vase privilegije su: $priv";
             $_SESSION['logged'] = true;
-            header( "refresh:3;url=index.php" ); //redirektuj posle 3 sekundi
+            $_SESSION['user_id'] = $usid;
+            // ubelezi id sesije u bazu i sacuvaj
+            $querrySesija = "INSERT INTO sesija (user_id) VALUES ($usid);";
+            $dataBase->query($querrySesija);
+            $result2 = $dataBase->query('SELECT MAX(sesija_id) FROM sesija');
+            $row2 = $result2->fetch_assoc();
+            $_SESSION['sesija_id'] = $row2['MAX(sesija_id)'];
+            header( "refresh:2;url=index.php" ); //redirektuj posle 3 sekundi
         }
         else {
             echo "Pogresan username ili lozinka";
-            header( "refresh:3;url=index.php" ); //redirektuj posle 3 sekundi
+            header( "refresh:2;url=index.php" ); //redirektuj posle 3 sekundi
         }
     
         $result->free();
