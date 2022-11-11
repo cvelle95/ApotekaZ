@@ -18,6 +18,7 @@ and open the template in the editor.
 }
 #wrapper{
     width: 100%;
+	height: 120%;
     margin: 0;
     padding: 0;
     background-color: #BBB9A4;
@@ -25,6 +26,7 @@ and open the template in the editor.
 }
 #wrapperFaktura{
     width: 100%;
+	height: 115vh;
     margin: 0;
     padding: 0;
     background-color: #BBB9A4;
@@ -38,9 +40,23 @@ and open the template in the editor.
     padding: 0;
     position: relative;
 }
+#wrapperUpis{
+    margin: 0px auto;
+    width: 100vw;
+    height: 60vh;
+    padding: 0;
+    position: relative;
+}
+#wrapperLogin{
+    margin: 0px auto;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    position: relative;
+}
 #top{
     width: 93%;
-    height: 100vh;
+    height: 120vh;
     background-image: url(images/bckg.png);
     background-repeat: no-repeat;
     background-size: cover;    
@@ -50,7 +66,7 @@ and open the template in the editor.
 }
 #topFaktura{
     width: 93%;
-    height: 120vh;
+    height: 121vh;
     background-image: url(images/bckg.png);
     background-repeat: no-repeat;
     background-size: cover;    
@@ -61,6 +77,11 @@ and open the template in the editor.
 #header{
     width: 100%;
     height: 13vh;
+    z-index: 0;
+}
+#headerUpis{
+    width: 100%;
+    height: 22vh;
     z-index: 0;
 }
 
@@ -75,26 +96,24 @@ and open the template in the editor.
   }
   #menu{
       float: right;
-      width: 50%;
-      height: 70%;
+      width: 70%;
+      height: 100%;
       margin-top: 2vh;
       margin-right: 3vh;
-      position: relative;
   }
   #menu ul.navigacija{
       float: left;
       padding: 0;
-      position: relative;
+
   }
   #menu ul.navigacija li{
       list-style-type: none;
-      padding: 2vh;
+      padding: 1.5vh;
       float: left;
       margin-left: 2.7vw;
-      position: relative;
   }
   li {
-    display: inline;
+   
   }
   #menu ul.navigacija li:hover{
       border-bottom: solid #BBB9A4;
@@ -126,12 +145,25 @@ and open the template in the editor.
     height: 84%;
     background-color: #BBB9A4;
 }
+#bodyLogin{
+    margin: 0px auto;
+    width: 100vw;
+    height: 60vh;
+    background-color: #BBB9A4;
+}
 #formaWrapper{
     width: 70%;
     margin: 0px auto;
     height: 100%;
     border: 1px solid #BBB9A4;
 }
+#formaLogin{
+    width: 40vw;
+    margin: 0px auto;
+    height: 40vh;
+    border: 1px solid #BBB9A4;
+}
+
 #forma{
     margin-top: 2%;
     position: relative;
@@ -186,6 +218,14 @@ input[type=submit] {
     width: 100%;
     height: 8vh;
 }
+#footerUpis{
+    width: 100%;
+    height: 18vh;
+}
+#footerPovrat{
+    width: 100%;
+    height: 18vh;
+}
 #gfooter{
     margin-top: 1vh;
     width: 93%;
@@ -199,6 +239,20 @@ input[type=submit] {
 #dfooter{
     width: 100%;
     height: 7vh;
+    margin-top: 1vh;
+    background-color: black;
+    position: relative;
+}
+#dfooterUpis{
+    width: 100%;
+    height: 17vh;
+    margin-top: 5vh;
+    background-color: black;
+    position: relative;
+}
+#dfooterPovrat{
+    width: 100%;
+    height: 17vh;
     margin-top: 1vh;
     background-color: black;
     position: relative;
@@ -232,6 +286,78 @@ input[type=submit] {
 	width: 10vw;
 	height: 7vh;
 }
+#sub{
+    background-color: #79002D;
+    width: 35%;
+    color: #fcffb1;
+    padding: 12px 20px;
+    border: none;
+    margin-top: 2vh;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#password{
+    width: 100%; /* Full width */
+    background-color: white;
+    padding: 1vh; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 1%; /* Add a top margin */
+    margin-bottom: 1%; /* Bottom margin */
+}
 .cleaner{
     clear: both;
+}
+.dropbtn {
+      text-decoration: none;
+      float: left;
+      text-align: center;
+      font-size: 1.5vw;
+      color: #7e3ad8;
+      display: block;
+      position: relative;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  margin-top: 30px;
+  z-index: 1;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+#aboutTxtField{
+    margin-top: 2%;
+    margin-left: 10vw;
+    margin-bottom: 2%;
+    width: 80vw;
+    height: 50vh;
+    border-radius: 20px;
+    background-color: #ccab9e;
+    box-shadow: 2px 4px #888888;
+    
+}
+#aboutText{
+    color: #523d5b;
+    margin-left: 2%;
+    margin-top: 2%;
+    font-family: cursive;
+    font-size: 1.9vw;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
 }

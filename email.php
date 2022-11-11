@@ -1,22 +1,22 @@
 <?php
+session_start();
 if(isset($_POST['email'])) {
  
 
  
     function died($error) {
-        // your error code can go here
         echo "We are very sorry, but there were error(s) found with the form you submitted. ";
         echo $error."<br /><br />";
         die();
     }
  
  
-    // validation expected data exists
+    // Da li su podaci iz forme primljeni
     if(!isset($_POST['first_name']) ||
         !isset($_POST['last_name']) ||
         !isset($_POST['email']) ||
         !isset($_POST['subj'])) {
-        died('We are sorry, but there appears to be a problem with the form you submitted.');       
+        died('Greska forme');       
     }
  
      
@@ -28,7 +28,7 @@ if(isset($_POST['email'])) {
     $subj = $_POST['subj']; // required
  
     $error_message = "";
-	$email_to = "ivanvani@icco.rf.gd";
+   	$email_to = "cvetkovici888@gmail.com";
     $email_subject = "New form submit from: ".$first_name." ".$last_name;
  
  
@@ -38,30 +38,54 @@ if(isset($_POST['email'])) {
  
     $email_message = "Form details below.\n\n";
  
-     
-    function clean_string($string) {
-      $bad = array("content-type","bcc:","to:","cc:","href");
-      return str_replace($bad,"",$string);
-    }
- 
+     // ocisti string
      
  
-    $email_message .= "First Name: ".clean_string($first_name)."\n";
-    $email_message .= "Last Name: ".clean_string($last_name)."\n";
-    $email_message .= "Email: ".clean_string($email)."\n";
-    $email_message .= "Company: ".clean_string($comp)."\n";
-    $email_message .= "Subject: ".clean_string($subj)."\n";
+    $email_message .= "First Name: ".$first_name."\n";
+    $email_message .= "Last Name: ".$last_name."\n";
+    $email_message .= "Email: ".$email."\n";
+    $email_message .= "Company: ".$comp."\n";
+    $email_message .= "Subject: ".$subj."\n";
+
+    /////////////////////////////////////////// UPIS U BAZUZ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    $host='localhost';
+     $user='ivan';//promeni posle
+     $pass = 'ivak47';
+     $db = 'apotekaz';
+ 
+     $dataBase = new mysqli($host,$user,$pass,$db) or die("Neuspesna konekcija na bazu");
+     if ($dataBase->connect_errno) {
+        printf("Connect failed: %s\n", $mysqli->connect_error);
+        exit();
+      }
+   ///// proveri da li je ulogovan user i napravi querije na osnovu toga
+      if(isset($_SESSION['username'])){
+          $user_id = $_SESSION['user_id'];
+          $upit = "INSERT INTO message (name,surname,email,text,user_id) VALUES ('$first_name','$last_name','$email','$subj',$user_id);";
+      }
+      else{
+          $upit = "INSERT INTO message (name,surname,email,text) VALUES ('$first_name','$last_name','$email','$subj');";
+      }
+
+      $dataBase->query($upit);
+  
+      $dataBase->close();
+    /////////////////////////////////////////////////////////////////////////////////////////
  
 // create email headers
 $headers = 'From: '.$email."\r\n".
-'Reply-To: '.$email."\r\n" .
-'X-Mailer: PHP/' . phpversion();
-@mail($email_to, $email_subject, $email_message, $headers);  
+'Reply-To: '.$email."\r\n";
+if(@mail($email_to, $email_subject, $email_message, $headers)){
+  echo "Thank you for contacting us";
+  header( "refresh:3;url=index.php" );
+}
+else{
+  echo "Error sending email";
+  header( "refresh:3;url=index.php" );
+}
 ?>
  
-<!-- html -->
  
-<p id="emsuccess">Thank you for contacting us.</p>
  
 <?php
  

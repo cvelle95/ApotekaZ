@@ -1,4 +1,17 @@
 <?php
+//////////////////////////////////PROVERI DA LI DATABASA POSTOJI\\\\\\\\\\\\\\\\\
+if(!isset($_COOKIE['dbCreated']) && $_COOKIE['dbCreated']==0){
+  $link = mysqli_connect('localhost', 'ivan', 'ivak47');
+
+  $db_selected = mysqli_select_db('apotekaz', $link);
+  if (!$db_selected) {
+      $cookie_name = "dbCreated";
+      $cookie_value = 0;
+      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+      header("refresh:0;url=kreirajBazu.php");
+  }
+}
+///////////////////////////////////////////////////////////////
 $godinaCopyright = date('Y');
 $smena1 = '7-14h';
 $smena2 = '14-21h';
@@ -86,7 +99,16 @@ $page = <<< BEGIN
                         <li><a class ="active" href="index.php">Home</a></li>
                         <li><a href="faktura.php">RFZO faktura</a></li>
                         <li><a href="aboutUs.html">About us</a></li>
+						<li><div class="dropdown">
+                        <button class="dropbtn">Rokovi</button>
+                          <div class="dropdown-content">
+                            <a href="rokovi_unos.php">Unos</a>
+                            <a href="rokovi_povrat.php">Povrat</a>
+                          </div>
+                         </div>
+						</li>
                         <li><a href="contact.php">Kontakt</a></li>
+                        <li><a href="login.php">Login</a></li>
                     </ul>
             </div>
         </div>

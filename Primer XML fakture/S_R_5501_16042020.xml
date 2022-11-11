@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FakturaZaRecepte xmlns:sql="urn:schemas-microsoft-com:xml-sql">
 <ApotekaInfo>
-<Sifra>08935637</Sifra>
+<Sifra>00000000</Sifra>
 <Naziv>Zdravstvena Ustanova Apoteka Zegin Farm</Naziv>
 <Adresa>Fruškogorska 12</Adresa>
 <Telefon>021-210-2310</Telefon>
-<BrZR>205-0000000263459-67</BrZR>
+<BrZR>111-111111-111</BrZR>
 <XMLverzija>2.0</XMLverzija>
 </ApotekaInfo>
 <FakturaInfo>

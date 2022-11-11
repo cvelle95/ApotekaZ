@@ -1,16 +1,8 @@
-
-
-
-
-
-
-
-
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Kontaktirajte nas</title>
+        <title>Unos Rokova</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -18,6 +10,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="style2.css" type="text/css"/>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
@@ -28,8 +21,8 @@
         </style>
     </head>
     <body>
-        <div id="wrapperKontakt">
-        <div id="header">
+        <div id="wrapperUpis">
+        <div id="headerUpis">
             <div id="logo"></div>
             <div id="menu">
                     <ul class ="navigacija">
@@ -49,23 +42,33 @@
                     </ul>
             </div>
         </div>
-        <div id="bodyKontakt">
+        <div id="bodyUnosRok">
             <div id="formaWrapper">
-                <form method="post" name="forma" action="email.php" id="forma"onsubmit="return proveriFormu()" >
-                    <label for="fname">First name <span class="star">*</span></label>
-                    <input type="text" id="fname" name="first_name" placeholder="Enter your first name..." required>
+                <form method="post" name="forma" action="upisiRok.php" id="forma"onsubmit="return proveriFormu()" >
+                    <label for="kod">Kod <span class="star">*</span></label>
+                    <input type="text" id="kod" name="kod" required>
                     
-                    <label for="lname">Last name <span class="star">*</span></label>
-                    <input type="text" id="lname" name="last_name" placeholder="Enter your last name..." required>
-                    
-                    <label for="company">Company</label>
-                    <input type="text" id="company" name="comp" placeholder="...">
-                    
-                    <label for="email">E-mail <span class="star">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="Enter your e-mail address..." required>
-                    
-                    <label for="subject">Poruka</label>
-                    <textarea id="subject" name="subj" placeholder="..." style="height:27vh;"></textarea>
+                    <label for="kolicina">Kolicina</label>
+                    <input type="text" id="kolicina" name="kolicina" >
+
+                    <label for="mesec">Mesec</label>
+                      <select name="mesec" id="mesec">
+                         <option value="1">1</option>
+                         <option value="2">2</option>
+                         <option value="3">3</option>
+                         <option value="4">4</option>
+                         <option value="5">5</option>
+                         <option value="6">6</option>
+                         <option value="7">7</option>
+                         <option value="8">8</option>
+                         <option value="9">9</option>
+                         <option value="10">10</option>
+                         <option value="11">11</option>
+                         <option value="12">12</option>
+                         </select>
+
+                    <label for="godina">Godina</label>
+                    <input type="text" id="godina" name="godina"  placeholder="2020">
                     
                     <input type="submit" value="Submit">
                 </form>
@@ -74,40 +77,36 @@
         <?php
         $godinaCopyright = date('Y');
         ?>
-        <div id="footerFaktura">
-        <div id="dfooter"><p id="copyright">&copy Vanii <?php echo $godinaCopyright?></p>
+        <div id="footerUpis">
+        <div id="dfooterUpis"><p id="copyright">&copy Vanii <?php echo $godinaCopyright?></p>
             
         </div>
     </div>
+
     
         <script>
             function proveriFormu() {
-               var fname = document.forms["forma"]["first_name"].value;
-               var lname = document.forms["forma"]["last_name"].value;
-               var subject = document.forms["forma"]["subj"].value;
-               var email = document.forms["forma"]["email"].value;
-               var prIP =/[A-ZČĆŽŠĐ][a-zčćžšđ]{1,20}/;
-               var emcheck =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-               if (!prIP.test(fname)) {
-                  alert("Name must begin with capital letter and have maximum of 21 characters");
-               return false;
-               }
-               else if (!prIP.test(lname)) {
-                  alert("Last name must begin with capital letter and have maximum of 21 characters");
-               return false;
-               }
-               else if (!emcheck.test(email)) {
-                  alert("Please enter valid email adress");
-               return false;
-               }
-               else if (subject === "" || subject.length<5) {
-                  alert("Please fill out subject");
-               return false;
-               }
-               else {
-               return true;
-               }
-            }   
+            var kod = document.forms["forma"]["kod"].value;
+            kod = String(kod);
+            var kolicina = document.forms["forma"]["kolicina"].value;
+            var godina = document.forms["forma"]["godina"].value;
+            var clen = 6;
+            if(kod.length != clen){
+            alert("Kod mora biti duzine 6 karaktera");
+            return false;
+            }
+            else if (kolicina < 0.01) {
+            alert("Unesite Kolicinu do 2 decimale");
+            return false;
+            }
+            else if (godina < 2020 || godina.length !==4 ) {
+            alert("Unesite ispravno godinu");
+            return false;
+            }
+            else {
+            return true;
+            }
+}
         </script>
     </body>
 </html>
